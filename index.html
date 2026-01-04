@@ -95,8 +95,6 @@
             height: auto;
             display: block;
             margin: 0 auto;
-            filter: invert(1);
-            mix-blend-mode: screen;
         }
 
         .headlines {
@@ -373,7 +371,7 @@
             font-size: 0.65rem;
             letter-spacing: 0.08em;
             color: var(--text-gray);
-            margin-bottom: 8px;
+            margin-bottom: 18px;
             text-align: center;
         }
 
@@ -381,7 +379,7 @@
             display: flex;
             align-items: flex-end;
             gap: 4px;
-            height: 80px;
+            height: 70px;
             margin-bottom: 6px;
         }
 
@@ -408,6 +406,14 @@
             background: var(--male-blue);
         }
 
+        .bar-nonbinary {
+            background: #9b59b6;
+        }
+
+        .bar-unspecified {
+            background: #666;
+        }
+
         .bar-value {
             position: absolute;
             top: -14px;
@@ -424,29 +430,10 @@
             white-space: nowrap;
         }
 
-        .age-legend {
-            display: flex;
-            gap: 10px;
-            margin-top: 6px;
-            font-size: 0.5rem;
-        }
-
-        .age-legend-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .age-legend-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 1px;
-        }
-
         @media (max-width: 600px) {
             .bar-chart {
                 gap: 3px;
-                height: 70px;
+                height: 60px;
             }
             .bar-stack {
                 width: 14px;
@@ -457,6 +444,9 @@
             }
             .bar-label {
                 font-size: 0.4rem;
+            }
+            .age-title {
+                margin-bottom: 14px;
             }
             .donut-chart {
                 width: 80px;
@@ -698,8 +688,6 @@
             width: auto;
             opacity: 0.9;
             transition: opacity 0.3s ease;
-            filter: invert(1);
-            mix-blend-mode: screen;
         }
 
         .mr305-logo:hover {
@@ -825,76 +813,80 @@
                     <div class="bar-chart">
                         <!-- <18: 2% -->
                         <div class="bar-group">
-                            <div class="bar-stack" style="height: 6px;">
+                            <div class="bar-stack" style="height: 5px;">
                                 <span class="bar-value">2%</span>
-                                <div class="bar-female" style="height: 50%;"></div>
-                                <div class="bar-male" style="height: 50%;"></div>
+                                <div class="bar-female" style="height: 51%;"></div>
+                                <div class="bar-male" style="height: 46%;"></div>
+                                <div class="bar-nonbinary" style="height: 1%;"></div>
+                                <div class="bar-unspecified" style="height: 2%;"></div>
                             </div>
                             <span class="bar-label">&lt;18</span>
                         </div>
                         <!-- 18-22: 12% -->
                         <div class="bar-group">
-                            <div class="bar-stack" style="height: 36px;">
+                            <div class="bar-stack" style="height: 30px;">
                                 <span class="bar-value">12%</span>
                                 <div class="bar-female" style="height: 51%;"></div>
-                                <div class="bar-male" style="height: 49%;"></div>
+                                <div class="bar-male" style="height: 46%;"></div>
+                                <div class="bar-nonbinary" style="height: 1%;"></div>
+                                <div class="bar-unspecified" style="height: 2%;"></div>
                             </div>
                             <span class="bar-label">18-22</span>
                         </div>
                         <!-- 23-27: 24% -->
                         <div class="bar-group">
-                            <div class="bar-stack" style="height: 72px;">
+                            <div class="bar-stack" style="height: 60px;">
                                 <span class="bar-value">24%</span>
                                 <div class="bar-female" style="height: 51%;"></div>
-                                <div class="bar-male" style="height: 49%;"></div>
+                                <div class="bar-male" style="height: 46%;"></div>
+                                <div class="bar-nonbinary" style="height: 1%;"></div>
+                                <div class="bar-unspecified" style="height: 2%;"></div>
                             </div>
                             <span class="bar-label">23-27</span>
                         </div>
                         <!-- 28-34: 29% -->
                         <div class="bar-group">
-                            <div class="bar-stack" style="height: 87px;">
+                            <div class="bar-stack" style="height: 73px;">
                                 <span class="bar-value">29%</span>
                                 <div class="bar-female" style="height: 51%;"></div>
-                                <div class="bar-male" style="height: 49%;"></div>
+                                <div class="bar-male" style="height: 46%;"></div>
+                                <div class="bar-nonbinary" style="height: 1%;"></div>
+                                <div class="bar-unspecified" style="height: 2%;"></div>
                             </div>
                             <span class="bar-label">28-34</span>
                         </div>
                         <!-- 35-44: 17% -->
                         <div class="bar-group">
-                            <div class="bar-stack" style="height: 51px;">
+                            <div class="bar-stack" style="height: 43px;">
                                 <span class="bar-value">17%</span>
                                 <div class="bar-female" style="height: 51%;"></div>
-                                <div class="bar-male" style="height: 49%;"></div>
+                                <div class="bar-male" style="height: 46%;"></div>
+                                <div class="bar-nonbinary" style="height: 1%;"></div>
+                                <div class="bar-unspecified" style="height: 2%;"></div>
                             </div>
                             <span class="bar-label">35-44</span>
                         </div>
                         <!-- 45-59: 13% -->
                         <div class="bar-group">
-                            <div class="bar-stack" style="height: 39px;">
+                            <div class="bar-stack" style="height: 33px;">
                                 <span class="bar-value">13%</span>
                                 <div class="bar-female" style="height: 51%;"></div>
-                                <div class="bar-male" style="height: 49%;"></div>
+                                <div class="bar-male" style="height: 46%;"></div>
+                                <div class="bar-nonbinary" style="height: 1%;"></div>
+                                <div class="bar-unspecified" style="height: 2%;"></div>
                             </div>
                             <span class="bar-label">45-59</span>
                         </div>
                         <!-- 60+: 3% -->
                         <div class="bar-group">
-                            <div class="bar-stack" style="height: 9px;">
+                            <div class="bar-stack" style="height: 8px;">
                                 <span class="bar-value">3%</span>
                                 <div class="bar-female" style="height: 51%;"></div>
-                                <div class="bar-male" style="height: 49%;"></div>
+                                <div class="bar-male" style="height: 46%;"></div>
+                                <div class="bar-nonbinary" style="height: 1%;"></div>
+                                <div class="bar-unspecified" style="height: 2%;"></div>
                             </div>
                             <span class="bar-label">60+</span>
-                        </div>
-                    </div>
-                    <div class="age-legend">
-                        <div class="age-legend-item">
-                            <span class="age-legend-dot" style="background: var(--female-pink);"></span>
-                            <span>Female</span>
-                        </div>
-                        <div class="age-legend-item">
-                            <span class="age-legend-dot" style="background: var(--male-blue);"></span>
-                            <span>Male</span>
                         </div>
                     </div>
                 </div>
