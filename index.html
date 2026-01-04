@@ -3,7 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FILMORE | Country Music Artist EPK</title>
+    <title>FILMORE | Artist Deck - EPK</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="F_logo_ONLY_black.png">
+    <link rel="apple-touch-icon" href="F_logo_ONLY_black.png">
+    
+    <!-- Open Graph / Social Share Meta Tags -->
+    <meta property="og:title" content="FILMORE Artist Deck - EPK">
+    <meta property="og:description" content="Rising Country Music Artist from Wildwood, Missouri - 251 Million Career Streams">
+    <meta property="og:image" content="https://filmore-epk.vercel.app/DSC05641.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://filmore-epk.vercel.app/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FILMORE Artist Deck - EPK">
+    <meta name="twitter:description" content="Rising Country Music Artist from Wildwood, Missouri - 251 Million Career Streams">
+    <meta name="twitter:image" content="https://filmore-epk.vercel.app/DSC05641.jpg">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -21,6 +41,8 @@
             --text-gray: #b0b0b0;
             --accent-gold: #c9a227;
             --accent-blue: #4a90d9;
+            --female-pink: #ff6b9d;
+            --male-blue: #4a90d9;
         }
 
         html {
@@ -58,6 +80,7 @@
             animation: fadeInDown 0.8s ease-out;
         }
 
+        /* Logo container with filter to extract white content from JPEG */
         .logo-container {
             margin-bottom: 20px;
             animation: fadeIn 1s ease-out 0.2s both;
@@ -72,6 +95,8 @@
             height: auto;
             display: block;
             margin: 0 auto;
+            filter: invert(1);
+            mix-blend-mode: screen;
         }
 
         .headlines {
@@ -142,17 +167,26 @@
         .spotify-title {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(1.1rem, 2.8vw, 1.5rem);
-            letter-spacing: 0.12em;
-            display: flex;
+            letter-spacing: 0.08em;
+            display: inline-flex;
             align-items: center;
-            gap: 2px;
+            line-height: 1;
         }
 
-        .spotify-icon {
-            width: 24px;
-            height: 24px;
-            vertical-align: middle;
-            margin: 0 1px;
+        .spotify-o {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 0.85em;
+            height: 0.85em;
+            margin: 0 0.01em;
+            position: relative;
+            top: -0.02em;
+        }
+
+        .spotify-o svg {
+            width: 100%;
+            height: 100%;
         }
 
         .spotify-subtitle {
@@ -161,36 +195,70 @@
             color: var(--text-gray);
         }
 
+        /* Desktop Layout */
         .spotify-grid {
             display: grid;
-            grid-template-columns: 140px 1fr 180px;
+            grid-template-columns: 1fr 180px;
+            grid-template-rows: auto auto;
             gap: 20px;
             align-items: start;
         }
 
+        .stats-lists {
+            grid-column: 1;
+            grid-row: 1 / 3;
+        }
+
+        .gender-chart {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .age-chart {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        /* Tablet Layout */
         @media (max-width: 900px) {
             .spotify-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 20px;
-            }
-            .gender-chart {
-                grid-column: 1;
-            }
-            .age-chart {
-                grid-column: 2;
+                grid-template-rows: auto auto;
             }
             .stats-lists {
                 grid-column: 1 / -1;
+                grid-row: 1;
+            }
+            .gender-chart {
+                grid-column: 1;
+                grid-row: 2;
+            }
+            .age-chart {
+                grid-column: 2;
+                grid-row: 2;
             }
         }
 
+        /* Mobile Layout - Gender and Age side by side below stats */
         @media (max-width: 600px) {
             .spotify-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto;
+                gap: 15px;
             }
-            .gender-chart, .age-chart, .stats-lists {
+            .stats-lists {
+                grid-column: 1 / -1;
+                grid-row: 1;
+            }
+            .gender-chart {
                 grid-column: 1;
+                grid-row: 2;
+                justify-self: center;
+            }
+            .age-chart {
+                grid-column: 2;
+                grid-row: 2;
+                justify-self: center;
             }
         }
 
@@ -206,8 +274,8 @@
             height: 100px;
             border-radius: 50%;
             background: conic-gradient(
-                #ff6b9d 0deg 183.6deg,
-                #4a90d9 183.6deg 349.2deg,
+                var(--female-pink) 0deg 183.6deg,
+                var(--male-blue) 183.6deg 349.2deg,
                 #9b59b6 349.2deg 352.8deg,
                 #666 352.8deg 360deg
             );
@@ -231,7 +299,7 @@
             display: flex;
             flex-direction: column;
             gap: 4px;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
         }
 
         .legend-item {
@@ -247,8 +315,8 @@
             flex-shrink: 0;
         }
 
-        .legend-dot.female { background: #ff6b9d; }
-        .legend-dot.male { background: #4a90d9; }
+        .legend-dot.female { background: var(--female-pink); }
+        .legend-dot.male { background: var(--male-blue); }
         .legend-dot.nonbinary { background: #9b59b6; }
         .legend-dot.unspecified { background: #666; }
 
@@ -293,7 +361,7 @@
             font-weight: 500;
         }
 
-        /* Age Distribution Chart */
+        /* Age Distribution Chart with Gender Colors */
         .age-chart {
             display: flex;
             flex-direction: column;
@@ -302,48 +370,105 @@
 
         .age-title {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 0.08em;
             color: var(--text-gray);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            text-align: center;
         }
 
         .bar-chart {
             display: flex;
             align-items: flex-end;
-            gap: 6px;
-            height: 90px;
-            margin-bottom: 8px;
+            gap: 4px;
+            height: 80px;
+            margin-bottom: 6px;
         }
 
         .bar-group {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
         }
 
-        .bar {
-            width: 22px;
-            background: linear-gradient(to top, #4a90d9, #6ba3e0);
-            border-radius: 2px 2px 0 0;
+        .bar-stack {
+            display: flex;
+            flex-direction: column;
+            width: 18px;
             position: relative;
         }
 
-        .bar::after {
-            content: attr(data-value);
+        .bar-female {
+            background: var(--female-pink);
+            border-radius: 2px 2px 0 0;
+        }
+
+        .bar-male {
+            background: var(--male-blue);
+        }
+
+        .bar-value {
             position: absolute;
-            top: -16px;
+            top: -14px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 0.55rem;
+            font-size: 0.5rem;
             color: var(--text-white);
             white-space: nowrap;
         }
 
         .bar-label {
-            font-size: 0.5rem;
+            font-size: 0.45rem;
             color: var(--text-gray);
+            white-space: nowrap;
+        }
+
+        .age-legend {
+            display: flex;
+            gap: 10px;
+            margin-top: 6px;
+            font-size: 0.5rem;
+        }
+
+        .age-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .age-legend-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 1px;
+        }
+
+        @media (max-width: 600px) {
+            .bar-chart {
+                gap: 3px;
+                height: 70px;
+            }
+            .bar-stack {
+                width: 14px;
+            }
+            .bar-value {
+                font-size: 0.45rem;
+                top: -12px;
+            }
+            .bar-label {
+                font-size: 0.4rem;
+            }
+            .donut-chart {
+                width: 80px;
+                height: 80px;
+            }
+            .donut-chart::after {
+                width: 48px;
+                height: 48px;
+            }
+            .gender-legend {
+                font-size: 0.5rem;
+            }
         }
 
         /* Social Icons */
@@ -573,6 +698,8 @@
             width: auto;
             opacity: 0.9;
             transition: opacity 0.3s ease;
+            filter: invert(1);
+            mix-blend-mode: screen;
         }
 
         .mr305-logo:hover {
@@ -634,36 +761,11 @@
         <!-- Spotify Stats Section -->
         <div class="spotify-section">
             <div class="spotify-header">
-                <h3 class="spotify-title">
-                    SP<svg class="spotify-icon" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>TIFY NUMBERS
-                </h3>
+                <h3 class="spotify-title">SP<span class="spotify-o"><svg viewBox="0 0 24 24" fill="#ffffff"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></span>TIFY NUMBERS</h3>
                 <span class="spotify-subtitle">(LAST 28 DAYS)</span>
             </div>
 
             <div class="spotify-grid">
-                <!-- Gender Distribution -->
-                <div class="gender-chart">
-                    <div class="donut-chart"></div>
-                    <div class="gender-legend">
-                        <div class="legend-item">
-                            <span class="legend-dot female"></span>
-                            <span>51% FEMALE</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-dot male"></span>
-                            <span>46% MALE</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-dot nonbinary"></span>
-                            <span>1% NON-BINARY</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-dot unspecified"></span>
-                            <span>NOT SPECIFIED</span>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Countries and Cities -->
                 <div class="stats-lists">
                     <div class="stats-column">
@@ -694,37 +796,105 @@
                     </div>
                 </div>
 
-                <!-- Age Distribution -->
+                <!-- Gender Distribution -->
+                <div class="gender-chart">
+                    <div class="donut-chart"></div>
+                    <div class="gender-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot female"></span>
+                            <span>51% FEMALE</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot male"></span>
+                            <span>46% MALE</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot nonbinary"></span>
+                            <span>1% NON-BINARY</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot unspecified"></span>
+                            <span>NOT SPECIFIED</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Age Distribution with Gender -->
                 <div class="age-chart">
                     <div class="age-title">AGE DISTRIBUTION</div>
                     <div class="bar-chart">
+                        <!-- <18: 2% -->
                         <div class="bar-group">
-                            <div class="bar" style="height: 7px;" data-value="2%"></div>
+                            <div class="bar-stack" style="height: 6px;">
+                                <span class="bar-value">2%</span>
+                                <div class="bar-female" style="height: 50%;"></div>
+                                <div class="bar-male" style="height: 50%;"></div>
+                            </div>
                             <span class="bar-label">&lt;18</span>
                         </div>
+                        <!-- 18-22: 12% -->
                         <div class="bar-group">
-                            <div class="bar" style="height: 43px;" data-value="12%"></div>
+                            <div class="bar-stack" style="height: 36px;">
+                                <span class="bar-value">12%</span>
+                                <div class="bar-female" style="height: 51%;"></div>
+                                <div class="bar-male" style="height: 49%;"></div>
+                            </div>
                             <span class="bar-label">18-22</span>
                         </div>
+                        <!-- 23-27: 24% -->
                         <div class="bar-group">
-                            <div class="bar" style="height: 86px;" data-value="24%"></div>
+                            <div class="bar-stack" style="height: 72px;">
+                                <span class="bar-value">24%</span>
+                                <div class="bar-female" style="height: 51%;"></div>
+                                <div class="bar-male" style="height: 49%;"></div>
+                            </div>
                             <span class="bar-label">23-27</span>
                         </div>
+                        <!-- 28-34: 29% -->
                         <div class="bar-group">
-                            <div class="bar" style="height: 104px;" data-value="29%"></div>
+                            <div class="bar-stack" style="height: 87px;">
+                                <span class="bar-value">29%</span>
+                                <div class="bar-female" style="height: 51%;"></div>
+                                <div class="bar-male" style="height: 49%;"></div>
+                            </div>
                             <span class="bar-label">28-34</span>
                         </div>
+                        <!-- 35-44: 17% -->
                         <div class="bar-group">
-                            <div class="bar" style="height: 61px;" data-value="17%"></div>
+                            <div class="bar-stack" style="height: 51px;">
+                                <span class="bar-value">17%</span>
+                                <div class="bar-female" style="height: 51%;"></div>
+                                <div class="bar-male" style="height: 49%;"></div>
+                            </div>
                             <span class="bar-label">35-44</span>
                         </div>
+                        <!-- 45-59: 13% -->
                         <div class="bar-group">
-                            <div class="bar" style="height: 47px;" data-value="13%"></div>
+                            <div class="bar-stack" style="height: 39px;">
+                                <span class="bar-value">13%</span>
+                                <div class="bar-female" style="height: 51%;"></div>
+                                <div class="bar-male" style="height: 49%;"></div>
+                            </div>
                             <span class="bar-label">45-59</span>
                         </div>
+                        <!-- 60+: 3% -->
                         <div class="bar-group">
-                            <div class="bar" style="height: 11px;" data-value="3%"></div>
+                            <div class="bar-stack" style="height: 9px;">
+                                <span class="bar-value">3%</span>
+                                <div class="bar-female" style="height: 51%;"></div>
+                                <div class="bar-male" style="height: 49%;"></div>
+                            </div>
                             <span class="bar-label">60+</span>
+                        </div>
+                    </div>
+                    <div class="age-legend">
+                        <div class="age-legend-item">
+                            <span class="age-legend-dot" style="background: var(--female-pink);"></span>
+                            <span>Female</span>
+                        </div>
+                        <div class="age-legend-item">
+                            <span class="age-legend-dot" style="background: var(--male-blue);"></span>
+                            <span>Male</span>
                         </div>
                     </div>
                 </div>
