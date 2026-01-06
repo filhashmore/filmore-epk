@@ -54,6 +54,35 @@
             color: var(--text-white);
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background image with overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('FILMORE-1sheet-bgd_01.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            z-index: -2;
+        }
+
+        /* Dark overlay for better text readability */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
         }
 
         /* Hero Section */
@@ -63,7 +92,7 @@
             align-items: center;
             justify-content: flex-start;
             padding: 30px 20px 40px;
-            background: var(--bg-dark);
+            background: transparent;
             position: relative;
         }
 
@@ -147,9 +176,11 @@
             max-width: 1000px;
             margin: 0 auto 30px;
             padding: 25px 20px;
-            background: rgba(17, 17, 17, 0.9);
+            background: rgba(17, 17, 17, 0.7);
             border-radius: 10px;
             animation: fadeIn 1s ease-out 0.8s both;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .spotify-header {
@@ -573,7 +604,7 @@
         .videos-section {
             width: 100%;
             padding: 35px 20px 60px;
-            background: linear-gradient(to bottom, var(--bg-dark), #131313);
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.3), rgba(19, 19, 19, 0.5));
         }
 
         .videos-header {
