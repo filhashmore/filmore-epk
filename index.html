@@ -557,6 +557,7 @@
             margin: 0 auto 40px;
             padding: 0 20px;
             animation: fadeIn 1.2s ease-out 1.2s both;
+            background: transparent;
         }
 
         .artist-photo-link {
@@ -566,6 +567,7 @@
             border-radius: 8px;
             box-shadow: 0 15px 50px rgba(0,0,0,0.5);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background: transparent;
         }
 
         .artist-photo-link:hover {
@@ -598,6 +600,21 @@
             display: block;
             object-fit: cover;
             object-position: center top;
+            background: transparent;
+        }
+
+        /* Print styles for PDF export */
+        @media print {
+            .artist-photo-link {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .artist-photo-link::after {
+                display: none;
+            }
+            .artist-section {
+                background: transparent !important;
+            }
         }
 
         /* Videos Section */
