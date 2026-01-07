@@ -1161,5 +1161,53 @@
             <img src="MR305inc_01.png" alt="MR305 Records" class="mr305-logo">
         </a>
     </footer>
+
+    <!-- Supabase Analytics Tracking -->
+    <script>
+        const SUPABASE_URL = 'https://hjtcibntpzdnobggbylh.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhqdGNpYm50cHpkbm9iZ2dieWxoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc3NTczNjYsImV4cCI6MjA4MzMzMzM2Nn0.QMqCofolUKmvPj1FR8AVYC1GLJz3U0aUztlMYiWnmV4';
+
+        // Track event function
+        async function trackEvent(eventType, eventData = '') {
+            try {
+                await fetch(`${SUPABASE_URL}/rest/v1/analytics`, {
+                    method: 'POST',
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify({
+                        event_type: eventType,
+                        event_data: eventData,
+                        user_agent: navigator.userAgent,
+                        referrer: document.referrer || 'direct'
+                    })
+                });
+            } catch (error) {
+                console.log('Analytics error:', error);
+            }
+        }
+
+        // 1. Track Page View on load
+        document.addEventListener('DOMContentLoaded', function() {
+            trackEvent('page_view', window.location.href);
+        });
+
+        // 2. Track PDF Download
+        document.querySelector('.download-btn').addEventListener('click', function() {
+            trackEvent('pdf_download', 'FILMORE_1_SHEET_2025.pdf');
+        });
+
+        // 3. Track Video Clicks
+        document.querySelectorAll('.video-card').forEach(function(card) {
+            card.addEventListener('click', function() {
+                const videoLabel = this.querySelector('.video-label').textContent;
+                const videoUrl = this.href;
+                trackEvent('video_click', videoLabel + ' | ' + videoUrl);
+            });
+        });
+    </script>
 </body>
 </html>
