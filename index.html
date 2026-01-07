@@ -297,6 +297,12 @@
             align-items: center;
         }
 
+        .donut-svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 12px;
+        }
+
         .donut-chart {
             width: 100px;
             height: 100px;
@@ -309,6 +315,7 @@
             );
             position: relative;
             margin-bottom: 12px;
+            display: none; /* Hidden - using SVG instead */
         }
 
         .donut-chart::after {
@@ -478,6 +485,10 @@
             .age-title {
                 margin-bottom: 24px;
             }
+            .donut-svg {
+                width: 80px;
+                height: 80px;
+            }
             .donut-chart {
                 width: 80px;
                 height: 80px;
@@ -621,6 +632,18 @@
                 opacity: 0 !important;
                 background: transparent !important;
                 box-shadow: none !important;
+            }
+            .donut-svg {
+                display: block !important;
+                visibility: visible !important;
+            }
+            .donut-svg circle {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            .bar-female, .bar-male {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
             }
         }
 
@@ -877,7 +900,18 @@
 
                 <!-- Gender Distribution -->
                 <div class="gender-chart">
-                    <div class="donut-chart"></div>
+                    <svg class="donut-svg" viewBox="0 0 100 100" width="100" height="100">
+                        <!-- Female 51% - pink -->
+                        <circle cx="50" cy="50" r="40" fill="transparent" stroke="#ff6b9d" stroke-width="20" stroke-dasharray="128.18 251.33" stroke-dashoffset="0" transform="rotate(-90 50 50)"/>
+                        <!-- Male 46% - blue -->
+                        <circle cx="50" cy="50" r="40" fill="transparent" stroke="#4a90d9" stroke-width="20" stroke-dasharray="115.61 251.33" stroke-dashoffset="-128.18" transform="rotate(-90 50 50)"/>
+                        <!-- Non-binary 1% - purple -->
+                        <circle cx="50" cy="50" r="40" fill="transparent" stroke="#9b59b6" stroke-width="20" stroke-dasharray="2.51 251.33" stroke-dashoffset="-243.79" transform="rotate(-90 50 50)"/>
+                        <!-- Not specified 2% - gray -->
+                        <circle cx="50" cy="50" r="40" fill="transparent" stroke="#666666" stroke-width="20" stroke-dasharray="5.03 251.33" stroke-dashoffset="-246.30" transform="rotate(-90 50 50)"/>
+                        <!-- Center hole -->
+                        <circle cx="50" cy="50" r="30" fill="#111111"/>
+                    </svg>
                     <div class="gender-legend">
                         <div class="legend-item">
                             <span class="legend-dot female"></span>
