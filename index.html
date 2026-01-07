@@ -762,9 +762,10 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: var(--accent-gold);
-            color: var(--bg-dark);
+            background: transparent;
+            color: var(--text-white);
             padding: 12px 24px;
+            border: 2px solid var(--text-white);
             border-radius: 6px;
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1rem;
@@ -774,7 +775,7 @@
         }
 
         .download-btn:hover {
-            background: #d4af37;
+            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-2px);
         }
 
